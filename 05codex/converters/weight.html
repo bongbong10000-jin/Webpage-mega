@@ -1,0 +1,49 @@
+﻿<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>무게 변환기</title>
+  <link rel="stylesheet" href="css/weight.css">
+  <script src="ja/weight.js" defer></script>
+</head>
+<body>
+  <main class="converter">
+    <header class="hero">
+      <span class="scale-icon" aria-hidden="true">⚖&#xfe0e;</span>
+      <div>
+        <h1>무게 변환기</h1>
+        <p id="instructions">한 칸에 숫자를 입력하면 다른 단위로 바로 변환됩니다.</p>
+      </div>
+    </header>
+    <div class="cards" role="group" aria-label="무게 단위" aria-describedby="instructions">
+      <div class="card card-mg">
+        <label for="mg"><span class="symbol">mg</span> 밀리그램</label>
+        <input id="mg" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" aria-describedby="feedback">
+      </div>
+      <div class="card card-g">
+        <label for="g"><span class="symbol">g</span> 그램</label>
+        <input id="g" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" aria-describedby="feedback">
+      </div>
+      <div class="card card-kg">
+        <label for="kg"><span class="symbol">kg</span> 킬로그램</label>
+        <input id="kg" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" aria-describedby="feedback">
+      </div>
+      <div class="card card-t">
+        <label for="t"><span class="symbol">t</span> 톤</label>
+        <input id="t" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" aria-describedby="feedback">
+      </div>
+      <div class="card card-oz">
+        <label for="oz"><span class="symbol">oz</span> 온스</label>
+        <input id="oz" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" aria-describedby="feedback">
+      </div>
+      <div class="card card-lb">
+        <label for="lb"><span class="symbol">lb</span> 파운드</label>
+        <input id="lb" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" aria-describedby="feedback">
+      </div>
+    </div>
+    <p id="feedback" class="feedback" role="status"></p>
+    <button id="reset" type="button">전체 초기화</button>
+  </main>
+</body>
+</html>

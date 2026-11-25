@@ -1,0 +1,659 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>선한 영향력 | 개발자 포트폴리오</title>
+<style>
+:root {
+  --bg:#080d19;
+  --panel:#101a2c;
+  --panel2:#15223a;
+  --text:#eff5ff;
+  --muted:#9aaac5;
+  --line:#273550;
+  --accent:#72e3c1;
+  --accent2:#79a7ff;
+}
+* {box-sizing:border-box}
+html {scroll-behavior:smooth}
+body {
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Noto Sans KR',Arial,sans-serif;
+  line-height:1.7;
+}
+body.light {
+  --bg:#f4f7fc;
+  --panel:#fff;
+  --panel2:#eaf0f9;
+  --text:#152238;
+  --muted:#576981;
+  --line:#d8e2f0;
+  --accent:#087e69;
+  --accent2:#315fc1;
+}
+a {color:inherit;text-decoration:none}
+button {font:inherit;cursor:pointer}
+.container {
+  width:min(1120px,calc(100% - 36px));
+  margin:auto;
+}
+.header {
+  position:sticky;
+  top:0;
+  z-index:10;
+  background:var(--bg);
+  border-bottom:1px solid var(--line);
+}
+.nav {
+  min-height:76px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+}
+.logo {font-size:22px;font-weight:800}
+.logo span {color:var(--accent)}
+.navlinks {display:flex;gap:24px}
+.navlinks a {font-size:14px;color:var(--muted)}
+.navlinks a:hover {color:var(--accent)}
+.iconbtn {
+  padding:9px 13px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:var(--panel);
+  color:var(--text);
+}
+.menu-btn {display:none}
+.hero {padding:95px 0}
+.hero-grid {
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  align-items:center;
+  gap:55px;
+}
+.eyebrow {
+  display:inline-block;
+  background:var(--panel);
+  color:var(--accent);
+  border:1px solid var(--line);
+  padding:7px 15px;
+  border-radius:30px;
+  font-size:13px;
+}
+.hero h1 {
+  font-size:clamp(37px,5.5vw,65px);
+  line-height:1.25;
+  letter-spacing:-2px;
+  margin:25px 0;
+}
+.gradient {
+  background:linear-gradient(100deg,var(--accent),var(--accent2));
+  background-clip:text;
+  -webkit-background-clip:text;
+  color:transparent;
+}
+.hero p,.section-head p,.card p,.timeline p {
+  color:var(--muted);
+}
+.actions {
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:28px;
+}
+.btn {
+  display:inline-block;
+  padding:12px 20px;
+  border-radius:11px;
+  border:1px solid var(--line);
+  font-size:14px;
+  font-weight:700;
+}
+.btn:hover {transform:translateY(-2px)}
+.primary {
+  background:var(--accent);
+  color:#071923;
+  border-color:transparent;
+}
+.secondary {background:var(--panel)}
+
+/* 프로필 사진 영역 */
+.hero-side {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:24px;
+}
+.profile-card {
+  width:100%;
+  max-width:370px;
+  text-align:center;
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:27px;
+}
+.profile-photo {
+  width:180px;
+  height:180px;
+  margin:0 auto 17px;
+  border-radius:50%;
+  border:4px solid var(--accent);
+  background:var(--panel2);
+  overflow:hidden;
+}
+.profile-photo img {
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.profile-card h2 {
+  margin:0 0 5px;
+  font-size:21px;
+}
+.profile-card p {
+  font-size:13px;
+  color:var(--muted);
+  margin:0;
+}
+
+/* 코드 장식 */
+.terminal {
+  width:100%;
+  background:#0c1423;
+  color:#cbd8f2;
+  border:1px solid #344766;
+  border-radius:16px;
+  overflow:hidden;
+}
+.termbar {
+  background:#18243a;
+  padding:12px 16px;
+}
+.circle {
+  display:inline-block;
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:#ff6a74;
+  margin-right:5px;
+}
+.circle:nth-child(2) {background:#ffd16d}
+.circle:nth-child(3) {background:#68d6a2}
+.code {
+  padding:20px;
+  font:13px/1.9 Consolas,monospace;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+}
+.green {color:#8ae7c1}
+.purple {color:#c5a6ff}
+
+/* 공통 섹션 */
+.section {padding:85px 0}
+.section-head {margin-bottom:32px}
+.kicker {
+  color:var(--accent);
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:2px;
+}
+.section h2 {
+  font-size:clamp(27px,4vw,38px);
+  margin:8px 0;
+}
+.about-grid {
+  display:grid;
+  grid-template-columns:1.25fr .75fr;
+  gap:20px;
+}
+.card {
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:27px;
+}
+.card h3 {margin-top:0}
+.stats {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+}
+.stat {
+  background:var(--panel2);
+  border-radius:13px;
+  padding:20px;
+}
+.stat strong {
+  display:block;
+  color:var(--accent);
+  font-size:28px;
+}
+.stat span {
+  font-size:13px;
+  color:var(--muted);
+}
+.skills,.projects {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+.skill-icon {font-size:28px}
+.chips {
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+  margin-top:17px;
+}
+.chip {
+  background:var(--panel2);
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:5px 10px;
+  font-size:12px;
+}
+.project {padding:0;overflow:hidden}
+.project-visual {
+  height:160px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.v1 {background:linear-gradient(135deg,#16366c,#277c8b)}
+.v2 {background:linear-gradient(135deg,#56306f,#a45280)}
+.v3 {background:linear-gradient(135deg,#18534c,#4e8d57)}
+.mock {
+  width:70%;
+  padding:15px;
+  background:#fff;
+  border-radius:10px;
+  transform:rotate(-6deg);
+}
+.mock div {
+  height:9px;
+  background:#cddbf0;
+  margin:9px 0;
+  border-radius:8px;
+}
+.mock div:first-child {width:45%;background:#7b9ee8}
+.mock div:last-child {width:75%}
+.project-body {padding:24px}
+.project-body p {font-size:14px;color:var(--muted)}
+.project-link {
+  font-size:13px;
+  color:var(--accent);
+  font-weight:700;
+}
+.timeline {
+  border-left:2px solid var(--line);
+  padding-left:27px;
+  display:grid;
+  gap:27px;
+}
+.date {
+  font-size:13px;
+  color:var(--accent);
+  font-weight:800;
+}
+.timeline h3 {margin:5px 0}
+.contact {
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:50px;
+  text-align:center;
+}
+.contact p {color:var(--muted)}
+.footer {
+  border-top:1px solid var(--line);
+  padding:25px 0;
+  color:var(--muted);
+  font-size:13px;
+}
+.footer .container {
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  flex-wrap:wrap;
+}
+@media(max-width:850px) {
+  .hero-grid,.about-grid {grid-template-columns:1fr}
+  .skills,.projects {grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:600px) {
+  .nav {min-height:66px}
+  .menu-btn {display:inline-block}
+  .navlinks {
+    display:none;
+    position:absolute;
+    top:66px;
+    left:0;
+    right:0;
+    background:var(--bg);
+    border-bottom:1px solid var(--line);
+    padding:20px;
+    flex-direction:column;
+    align-items:flex-start;
+  }
+  .navlinks.open {display:flex}
+  .hero {padding:65px 0}
+  .section {padding:55px 0}
+  .skills,.projects {grid-template-columns:1fr}
+  .terminal {display:none}
+  .contact {padding:30px 20px}
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <nav class="container nav">
+    <a href="#home" class="logo">
+      선한 영향력<span>.DEV</span>
+    </a>
+    <div class="navlinks" id="navlinks">
+      <a href="#about">소개</a>
+      <a href="#skills">기술 스택</a>
+      <a href="#projects">프로젝트</a>
+      <a href="#experience">경력</a>
+      <a href="#contact">연락하기</a>
+    </div>
+    <div>
+      <button class="iconbtn" id="themeBtn" aria-label="테마 전환">☀</button>
+      <button class="iconbtn menu-btn" id="menuBtn" aria-label="메뉴 열기" aria-expanded="false">☰</button>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <!-- 메인 소개 -->
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">
+          ● 새로운 기회를 기다리고 있습니다
+        </span>
+        <h1>
+          안녕하세요,<br>
+          <span class="gradient">경험을 만드는</span><br>
+          개발자 선한 영향력입니다.
+        </h1>
+        <p>
+          사용자의 문제를 기술로 해결하는 프론트엔드 개발자입니다.
+          빠르고 직관적인 웹 경험을 만들기 위해 끊임없이 배우고 실험합니다.
+        </p>
+        <div class="actions">
+          <a class="btn primary" href="#projects">프로젝트 보기 ↗</a>
+          <a class="btn secondary" href="#contact">연락하기 →</a>
+        </div>
+      </div>
+
+      <div class="hero-side">
+        <!-- 프로필 사진: src 속성만 수정하세요 -->
+        <div class="profile-card">
+          <div class="profile-photo">
+            <img
+              src="img/elf-moondance-father-6680949_1280.png"
+              alt="선한 영향력 프로필 사진"
+            >
+          </div>
+          <h2>선한 영향력</h2>
+          <p>Frontend Developer · Portfolio</p>
+        </div>
+
+        <div class="terminal">
+          <div class="termbar">
+            <span class="circle"></span>
+            <span class="circle"></span>
+            <span class="circle"></span>
+          </div>
+          <div class="code"><span class="purple">const</span> developer = {
+  name: <span class="green">'선한 영향력'</span>,
+  role: <span class="green">'Frontend Developer'</span>,
+  skills: [<span class="green">'React'</span>, <span class="green">'TypeScript'</span>],
+  passion: <span class="green">'Great UX'</span>,
+  available: true
+};</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 자기소개 -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-head">
+        <div class="kicker">01 / About Me</div>
+        <h2>기술 너머의 가치를 고민합니다</h2>
+        <p>코드를 작성하는 것에서 그치지 않고, 문제의 본질을 찾습니다.</p>
+      </div>
+      <div class="about-grid">
+        <article class="card">
+          <h3>반갑습니다 👍</h3>
+          <p>
+            저는 웹 서비스의 성능과 사용성을 함께 고민하는
+            프론트엔드 개발자 선한 영향력입니다.<br><br>
+            복잡한 문제를 명확한 인터페이스로 풀어내는 과정에
+            즐거움을 느낍니다. 기획자, 디자이너, 백엔드 개발자와
+            적극적으로 소통하며 유지보수하기 좋은 코드를 추구합니다.
+            <br><br>
+            최근에는 접근성, 디자인 시스템, 웹 성능 최적화에
+            관심을 가지고 있습니다.
+          </p>
+        </article>
+        <div class="stats">
+          <div class="stat"><strong>3+</strong><span>개발 경력 (년)</span></div>
+          <div class="stat"><strong>12+</strong><span>참여 프로젝트</span></div>
+          <div class="stat"><strong>5+</strong><span>주요 기술 스택</span></div>
+          <div class="stat"><strong>100%</strong><span>배움에 대한 열정</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 기술 스택 -->
+  <section class="section" id="skills">
+    <div class="container">
+      <div class="section-head">
+        <div class="kicker">02 / Tech Stack</div>
+        <h2>사용하는 기술</h2>
+        <p>목적에 맞는 기술을 선택하고 꾸준히 깊이를 더합니다.</p>
+      </div>
+      <div class="skills">
+        <article class="card">
+          <div class="skill-icon">💻</div>
+          <h3>Frontend</h3>
+          <p>확장 가능하고 접근성 높은 UI 개발</p>
+          <div class="chips">
+            <span class="chip">React</span>
+            <span class="chip">Next.js</span>
+            <span class="chip">TypeScript</span>
+            <span class="chip">HTML/CSS</span>
+          </div>
+        </article>
+        <article class="card">
+          <div class="skill-icon">⚙️</div>
+          <h3>Backend & Data</h3>
+          <p>API와 데이터 흐름에 대한 이해</p>
+          <div class="chips">
+            <span class="chip">Node.js</span>
+            <span class="chip">Express</span>
+            <span class="chip">REST API</span>
+            <span class="chip">PostgreSQL</span>
+          </div>
+        </article>
+        <article class="card">
+          <div class="skill-icon">🚀</div>
+          <h3>Tools & Workflow</h3>
+          <p>효율적인 협업과 배포 자동화</p>
+          <div class="chips">
+            <span class="chip">Git</span>
+            <span class="chip">Figma</span>
+            <span class="chip">Docker</span>
+            <span class="chip">GitHub Actions</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 프로젝트 -->
+  <section class="section" id="projects">
+    <div class="container">
+      <div class="section-head">
+        <div class="kicker">03 / Selected Work</div>
+        <h2>주요 프로젝트</h2>
+        <p>문제 정의부터 구현까지 주도적으로 참여한 작업입니다. (예시 프로젝트)</p>
+      </div>
+      <div class="projects">
+        <article class="card project">
+          <div class="project-visual v1">
+            <div class="mock"><div></div><div></div><div></div></div>
+          </div>
+          <div class="project-body">
+            <h3>Flowboard</h3>
+            <p>팀의 업무를 시각적으로 관리하는 협업 대시보드. 드래그 앤 드롭과 실시간 상태 동기화를 구현했습니다.</p>
+            <div class="chips">
+              <span class="chip">React</span>
+              <span class="chip">TypeScript</span>
+              <span class="chip">Firebase</span>
+            </div>
+            <p class="project-link">협업 도구 · 예시 프로젝트 ↗</p>
+          </div>
+        </article>
+        <article class="card project">
+          <div class="project-visual v2">
+            <div class="mock"><div></div><div></div><div></div></div>
+          </div>
+          <div class="project-body">
+            <h3>Shoply</h3>
+            <p>빠른 탐색과 구매 흐름에 집중한 커머스 웹 서비스. 반응형 UI와 상품 필터링을 설계했습니다.</p>
+            <div class="chips">
+              <span class="chip">Next.js</span>
+              <span class="chip">Tailwind CSS</span>
+              <span class="chip">API</span>
+            </div>
+            <p class="project-link">이커머스 · 예시 프로젝트 ↗</p>
+          </div>
+        </article>
+        <article class="card project">
+          <div class="project-visual v3">
+            <div class="mock"><div></div><div></div><div></div></div>
+          </div>
+          <div class="project-body">
+            <h3>Insight Analytics</h3>
+            <p>복잡한 지표를 직관적인 차트로 제공하는 데이터 분석 플랫폼. 재사용 가능한 컴포넌트를 구축했습니다.</p>
+            <div class="chips">
+              <span class="chip">React</span>
+              <span class="chip">Chart.js</span>
+              <span class="chip">Node.js</span>
+            </div>
+            <p class="project-link">데이터 시각화 · 예시 프로젝트 ↗</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 경력 -->
+  <section class="section" id="experience">
+    <div class="container">
+      <div class="section-head">
+        <div class="kicker">04 / Experience</div>
+        <h2>경험과 성장</h2>
+        <p>협업하며 성장해 온 과정입니다. (예시 이력)</p>
+      </div>
+      <div class="timeline">
+        <article>
+          <div class="date">2024 — 현재</div>
+          <h3>프론트엔드 개발자 · ABC 테크</h3>
+          <p>웹 서비스 UI 개발, 공통 컴포넌트 구축, 성능 개선 및 코드 리뷰 문화에 참여</p>
+        </article>
+        <article>
+          <div class="date">2022 — 2024</div>
+          <h3>주니어 웹 개발자 · XYZ 스튜디오</h3>
+          <p>기업 웹사이트 및 관리 도구 개발, 반응형 레이아웃과 API 연동 구현</p>
+        </article>
+        <article>
+          <div class="date">2018 — 2022</div>
+          <h3>컴퓨터공학 전공 · 예시대학교</h3>
+          <p>소프트웨어 공학, 자료구조, 데이터베이스 및 웹 프로그래밍 학습</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 연락처 -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="contact">
+        <div class="kicker">05 / Contact</div>
+        <h2>함께 좋은 서비스를 만들어 볼까요?</h2>
+        <p>새로운 프로젝트, 협업, 채용 제안 모두 환영합니다. 편하게 메시지를 보내 주세요.</p>
+        <a class="btn primary" href="mailto:hello@example.com?subject=포트폴리오%20문의">
+          ✉ 이메일 보내기
+        </a>
+        <p style="font-size:12px">
+          hello@example.com · 실제 사용 전 변경하세요.
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <span>© <span id="year"></span> 선한 영향력. All rights reserved.</span>
+    <span>Designed & Built with HTML · CSS · JavaScript</span>
+  </div>
+</footer>
+
+<script>
+// 다크 / 라이트 모드
+const themeBtn = document.getElementById('themeBtn');
+function applyTheme(mode) {
+  document.body.classList.toggle('light',mode==='light');
+  themeBtn.textContent=mode==='light'?'☾':'☀';
+}
+let theme='dark';
+try {
+  theme=localStorage.getItem('portfolio-theme')||'dark';
+} catch(e) {}
+applyTheme(theme);
+
+themeBtn.addEventListener('click',()=>{
+  theme=document.body.classList.contains('light')?'dark':'light';
+  applyTheme(theme);
+  try {
+    localStorage.setItem('portfolio-theme',theme);
+  } catch(e) {}
+});
+
+// 모바일 메뉴
+const menuBtn=document.getElementById('menuBtn');
+const navlinks=document.getElementById('navlinks');
+
+menuBtn.addEventListener('click',()=>{
+  const open=navlinks.classList.toggle('open');
+  menuBtn.textContent=open?'✕':'☰';
+  menuBtn.setAttribute('aria-expanded',String(open));
+});
+
+navlinks.querySelectorAll('a').forEach(a=>{
+  a.addEventListener('click',()=>{
+    navlinks.classList.remove('open');
+    menuBtn.textContent='☰';
+    menuBtn.setAttribute('aria-expanded','false');
+  });
+});
+
+// 연도 자동 표시
+document.getElementById('year').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>

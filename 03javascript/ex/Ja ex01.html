@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>자바-javascript</title>
+
+        <body>
+
+            <h2>환영합니다</h2>
+
+            <div>
+                <input type="text" placeholder="이름을 입력하세요" id="nameInput">
+                <button type="button" id="confirmbtn">확인</button>
+
+            </div>
+
+            <script>
+                //자바스크립트 코드 작성
+                // alert("자바스크립작동");
+
+                // 버튼 요소를 가져오기
+            
+                //변수 : 값을 저장하는 공간
+                //버튼 요소 가져오기
+                const confirmbtn = document.querySelector("#confirmbtn");
+                // 버튼에 클릭 이벤트 등록
+                confirmbtn.addEventListener("click",()=> {
+                   // alert("확인");
+
+                    //입력태그 가져오기
+                    const nameInput = document.querySelector("#nameInput");
+                    // 입력요소로 부터 입력 값 가져오기
+                    const name = nameInput.value;
+
+                    //가져온 입력 값이 비워진 상태인지 점검
+                    // 만약 name이 비워져 있다면 (""와 같다면)
+                    if(name == "") {
+                        alert("이름을 입력하세요");
+                        return; //중단
+                    }
+
+                    alert(name + "님 반갑습니다");
+
+
+                });
+                //
+
+            </script>
+        </body>
+
+
+    </head>
+
+</html>
+
+
+

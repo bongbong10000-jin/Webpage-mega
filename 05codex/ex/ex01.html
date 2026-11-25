@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>더하기 계산기</title>
+    </head>
+
+    <body>
+        <h2>더하기 계산기</h2>
+        <div>
+            <input type="number" id="number1Input"> +
+            <input type="number" id="number2Input">
+            <button type="button" id="plusbtn">더하기</button>
+        </div>
+        <h3 id="resultth3">결과 : <span id="resultSpan">25</span> </h3>
+
+
+
+        <script>
+            const plusbtn = document.querySelector("#plusbtn");
+
+            plusbtn.addEventListener("click", () => {
+                const number1Input = document.querySelector("#number1Input");
+                const number1 = Number(number1Input.value); // 숫자타입으로 변경 한 것임.
+
+                const number2Input = document.querySelector("#number2Input");
+                const number2 = Number(number2Input.value); // 숫자타입으로 변경 한 것임.
+
+                // 데이터 타입
+                // 문자열 : 문자들이 나열 된 타입.
+                // 숫자
+
+                
+                if(number1 == "") {
+                    alert("숫자1을 입력하세요")
+                    return ;
+
+                    alert(number1)
+                }
+
+
+                if(number2 =="") {
+                    alert("숫자2을 입력하세요")
+                    return ;
+                }
+
+                const result = number1 + number2;
+
+                const resultSpan = document.querySelector("#resultSpan");
+                resultSpan.textContent = result;
+
+
+                const resultth3 = document.querySelectorAll("#resultth3");
+                //태그 내용을 바꾼다.
+                // resultth3.textContent = "결과 : " + result;
+
+                //alert(result)
+
+            })
+
+        </script>
+
+
+    </body>
+
+
+</html>

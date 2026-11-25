@@ -1,0 +1,53 @@
+﻿<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>실시간 길이 변환기</title>
+  <link rel="stylesheet" href="css/length.css">
+  <script src="ja/length.js" defer></script>
+</head>
+<body>
+  <main class="converter">
+    <header>
+      <h1>실시간 길이 변환기</h1>
+      <p id="instructions">어느 칸에나 숫자를 입력하면 다른 단위로 바로 변환됩니다.</p>
+    </header>
+    <div class="fields" role="group" aria-label="길이 단위" aria-describedby="instructions">
+      <div class="field">
+        <label for="mm">밀리미터 <span>(mm)</span></label>
+        <input id="mm" type="text" inputmode="decimal" autocomplete="off" spellcheck="false">
+      </div>
+      <div class="field">
+        <label for="cm">센티미터 <span>(cm)</span></label>
+        <input id="cm" type="text" inputmode="decimal" autocomplete="off" spellcheck="false">
+      </div>
+      <div class="field">
+        <label for="m">미터 <span>(m)</span></label>
+        <input id="m" type="text" inputmode="decimal" autocomplete="off" spellcheck="false">
+      </div>
+      <div class="field">
+        <label for="km">킬로미터 <span>(km)</span></label>
+        <input id="km" type="text" inputmode="decimal" autocomplete="off" spellcheck="false">
+      </div>
+      <div class="field">
+        <label for="inch">인치 <span>(inch)</span></label>
+        <input id="inch" type="text" inputmode="decimal" autocomplete="off" spellcheck="false">
+      </div>
+      <div class="field">
+        <label for="ft">피트 <span>(ft)</span></label>
+        <input id="ft" type="text" inputmode="decimal" autocomplete="off" spellcheck="false">
+      </div>
+      <div class="field">
+        <label for="yd">야드 <span>(yd)</span></label>
+        <input id="yd" type="text" inputmode="decimal" autocomplete="off" spellcheck="false">
+      </div>
+      <div class="field">
+        <label for="mi">마일 <span>(mi)</span></label>
+        <input id="mi" type="text" inputmode="decimal" autocomplete="off" spellcheck="false">
+      </div>
+    </div>
+    <button id="reset" type="button">초기화</button>
+  </main>
+</body>
+</html>
